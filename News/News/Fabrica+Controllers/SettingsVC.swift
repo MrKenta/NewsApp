@@ -24,11 +24,21 @@ class SettingsVC: UITableViewController{
     
     
     override func viewDidLoad() {
+        super .viewDidLoad()
         langPicker.dataSource = self
         langPicker.delegate = self
         title = "SETTINGS"
         acceptButton.layer.cornerRadius = 15
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewDidAppear(true)
+        navigationController?.navigationBar.barTintColor = .white
+        tabBarController?.tabBar.barTintColor = .white
+    }
+    
+    
     @IBAction func switchAcion(_ sender:UISwitch) {
         switch sender.isOn{
         case true:

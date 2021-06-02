@@ -21,10 +21,10 @@ final class NetworkManager {
                switch result {
                case let.success(response):
                    print()
-                   guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                   guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                        return
                }
-                   completion(weather)
+                   completion(news)
                case let .failure(error):
                    print(error)
            }
@@ -36,10 +36,10 @@ final class NetworkManager {
             switch result {
             case let.success(response):
                 print()
-                guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                     return
             }
-                completion(weather)
+                completion(news)
             case let .failure(error):
                 print(error)
         }
@@ -51,10 +51,10 @@ final class NetworkManager {
             switch result {
             case let.success(response):
                 print()
-                guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                     return
             }
-                completion(weather)
+                completion(news)
             case let .failure(error):
                 print(error)
         }
@@ -65,10 +65,10 @@ final class NetworkManager {
             switch result {
             case let.success(response):
                 print()
-                guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                     return
             }
-                completion(weather)
+                completion(news)
             case let .failure(error):
                 print(error)
         }
@@ -80,10 +80,10 @@ final class NetworkManager {
             switch result {
             case let.success(response):
                 print()
-                guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                     return
             }
-                completion(weather)
+                completion(news)
             case let .failure(error):
                 print(error)
         }
@@ -95,10 +95,10 @@ final class NetworkManager {
             switch result {
             case let.success(response):
                 print()
-                guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+                guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                     return
             }
-                completion(weather)
+                completion(news)
             case let .failure(error):
                 print(error)
         }
@@ -108,11 +108,10 @@ final class NetworkManager {
         provider.request(.getTechnologyNews(dataForServer:data)) { (result) in
            switch result {
            case let.success(response):
-               print()
-               guard let weather = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
+               guard let news = try? response.mapObject(ServerResponse.self) else {failure("Unknown")
                    return
            }
-               completion(weather)
+               completion(news)
            case let .failure(error):
                print(error)
        }
