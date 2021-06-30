@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36094CB4268C6A8100463C3F /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36094CB3268C6A8100463C3F /* StartVC.swift */; };
 		36099EA9265F8F6B0078BD29 /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EA8265F8F6B0078BD29 /* BackendAPI.swift */; };
 		36099EAC265F9A120078BD29 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EAB265F9A110078BD29 /* NetworkManager.swift */; };
 		36099EAF265F9C070078BD29 /* ObjectMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EAE265F9C070078BD29 /* ObjectMapping.swift */; };
+		3610690B26875CD3009CFD2E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610690A26875CD3009CFD2E /* UserDefaults.swift */; };
 		3692A920265D469000DE92CD /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692A91F265D469000DE92CD /* SampleTableViewController.swift */; };
 		3692A923265D481400DE92CD /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692A922265D481400DE92CD /* SettingsVC.swift */; };
 		36C45EBA265802EC00EC58DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45EB9265802EC00EC58DA /* AppDelegate.swift */; };
@@ -25,9 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36094CB3268C6A8100463C3F /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		36099EA8265F8F6B0078BD29 /* BackendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
 		36099EAB265F9A110078BD29 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		36099EAE265F9C070078BD29 /* ObjectMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectMapping.swift; sourceTree = "<group>"; };
+		3610690A26875CD3009CFD2E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		3692A91F265D469000DE92CD /* SampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
 		3692A922265D481400DE92CD /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		36C45EB6265802EC00EC58DA /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +102,7 @@
 			children = (
 				36C45EB9265802EC00EC58DA /* AppDelegate.swift */,
 				36C45EBB265802EC00EC58DA /* SceneDelegate.swift */,
+				3610690A26875CD3009CFD2E /* UserDefaults.swift */,
 				36C45EBF265802EC00EC58DA /* Main.storyboard */,
 				36C45EE42658075900EC58DA /* Networking */,
 				36C45EC2265802EE00EC58DA /* Assets.xcassets */,
@@ -115,6 +120,7 @@
 				36C45ED42658052400EC58DA /* Fabrica.swift */,
 				3692A91F265D469000DE92CD /* SampleTableViewController.swift */,
 				3692A922265D481400DE92CD /* SettingsVC.swift */,
+				36094CB3268C6A8100463C3F /* StartVC.swift */,
 			);
 			path = "Fabrica+Controllers";
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				36099EAC265F9A120078BD29 /* NetworkManager.swift in Sources */,
 				36C45ED52658052400EC58DA /* Fabrica.swift in Sources */,
 				36C45EBA265802EC00EC58DA /* AppDelegate.swift in Sources */,
+				3610690B26875CD3009CFD2E /* UserDefaults.swift in Sources */,
 				36C45EBC265802EC00EC58DA /* SceneDelegate.swift in Sources */,
 				36C45EDE265806E000EC58DA /* SampleCell.swift in Sources */,
 				36C45EE6265807C500EC58DA /* Category.swift in Sources */,
@@ -264,6 +271,7 @@
 				36099EAF265F9C070078BD29 /* ObjectMapping.swift in Sources */,
 				3692A920265D469000DE92CD /* SampleTableViewController.swift in Sources */,
 				3692A923265D481400DE92CD /* SettingsVC.swift in Sources */,
+				36094CB4268C6A8100463C3F /* StartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

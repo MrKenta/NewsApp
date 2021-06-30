@@ -18,61 +18,74 @@ class SampleTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        setBarButton()
         
         let cell = UINib(nibName:String(describing:SampleCell.self), bundle:nil)
         tableView.register(cell, forCellReuseIdentifier:String(describing:SampleCell.self))
-        
         switch title {
-        case Category.business.rawValue.uppercased():
-            NetworkManager.shared.getBusinessNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        case CategoryEnum.business.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getBusinessNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        case  Category.entertainment.rawValue.uppercased():
+            
+        case  CategoryEnum.entertainment.rawValue.uppercased():
             NetworkManager.shared.getEntertainmentNews(data:APIKey.shared) { (ServerResponse) in
                 self.arrayNews = ServerResponse.data
                 self.tableView.reloadData()
             } failure: { (error) in
                 print(error)
             }
-        case  Category.general.rawValue.uppercased():
-            NetworkManager.shared.getGeneralNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        
+        case  CategoryEnum.general.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getGeneralNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        case  Category.sports.rawValue.uppercased():
-            NetworkManager.shared.getSportsNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        case  CategoryEnum.sports.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getSportsNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        case  Category.health.rawValue.uppercased():
-            NetworkManager.shared.getHealthNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        case  CategoryEnum.health.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getHealthNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        case  Category.science.rawValue.uppercased():
-            NetworkManager.shared.getScienceNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        case  CategoryEnum.science.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getScienceNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-        case  Category.technology.rawValue.uppercased():
-            NetworkManager.shared.getTechnologyNews(data:APIKey.shared) { (ServerResponse) in
-                self.arrayNews = ServerResponse.data
-                self.tableView.reloadData()
-            } failure: { (error) in
-                print(error)
+        case  CategoryEnum.technology.rawValue.uppercased():
+            DispatchQueue.global(qos:.userInitiated).async {
+                NetworkManager.shared.getTechnologyNews(data:APIKey.shared) { (ServerResponse) in
+                    self.arrayNews = ServerResponse.data
+                    self.tableView.reloadData()
+                } failure: { (error) in
+                    print(error)
+                }
             }
-
         default:
             break
         }
@@ -96,22 +109,30 @@ class SampleTableViewController: UITableViewController {
         
         guard let newsCell = cell as? SampleCell else { return cell }
 
-        newsCell.mainTextLabel.text = arrayNews[indexPath.row].description
-        newsCell.titleLabel.text = arrayNews[indexPath.row].title
-        
-        
-        if let authorText = arrayNews[indexPath.row].source.name {
-            newsCell.authorLabel.text = authorText
+        if let title = arrayNews[indexPath.row].title, let mainText = arrayNews[indexPath.row].description, let author = arrayNews[indexPath.row].author, let dateText = arrayNews[indexPath.row].date {
+            
+            DispatchQueue.main.async {
+                newsCell.setCell(title:title, text:mainText)
+            }
+            
+           
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+            if let date = dateFormatter.date(from: dateText){
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let results = dateFormatter.string(from: date)
+                newsCell.authorLabel.text = results + "," + author
+            }
         }
-        newsCell.dateLabel.text = arrayNews[indexPath.row].date
+     
         
-        switch APIKey.shared.darkMode {
+        switch Settings.shared.darkMode {
         case true:
             self.view.backgroundColor = .black
             navigationController?.navigationBar.barTintColor = .black
             tabBarController?.tabBar.barTintColor = .black
             newsCell.backgroundColor = .black
-            newsCell.mainTextLabel.textColor = .white
+            newsCell.mainText.textColor = .white
             newsCell.authorLabel.textColor = .white
             newsCell.titleLabel.textColor = .white
             newsCell.dateLabel.textColor = .white
@@ -120,7 +141,7 @@ class SampleTableViewController: UITableViewController {
         }
         
         
-        switch APIKey.shared.multicolor {
+        switch Settings.shared.multiColorMode {
         case true:
              color(cell:newsCell)
             navigationController?.navigationBar.barTintColor = .systemIndigo
@@ -189,49 +210,23 @@ class SampleTableViewController: UITableViewController {
         }
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func setBarButton() {
+        let settingsButton = UIButton(frame:CGRect(x:0, y:0, width:75, height:40))
+        settingsButton.layer.cornerRadius = 10
+        settingsButton.layer.borderWidth = 1
+        settingsButton.layer.borderColor = UIColor.systemBlue.cgColor
+        settingsButton.setTitle("Settings", for:.normal)
+        settingsButton.setTitleColor(.systemBlue, for:.normal)
+        settingsButton.addTarget(self, action:#selector(action), for:.touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView:settingsButton)
+        navigationItem.rightBarButtonItem = rightBarButton
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    @objc func action() {
+        let storyboard = UIStoryboard(name:"Main", bundle:nil)
+        guard let settingsVC = storyboard.instantiateViewController(identifier:String(describing: SettingsVC.self)) as? SettingsVC else { return  }
+        let navigationVC = UINavigationController(rootViewController:settingsVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+            present(navigationVC, animated: true)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

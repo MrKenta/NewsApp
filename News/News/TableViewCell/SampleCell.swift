@@ -12,23 +12,33 @@ class SampleCell: UITableViewCell {
 
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var mainTextLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var mainText: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var stack: UIStackView!
+    @IBOutlet weak var authorLabel: UILabel!
+    
+    
     
     
         override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        super.prepareForReuse()
     }
     
     
-    func setCell(urlString:String,title:String,text:String)  {
+    func setCell(title:String,text:String)  {
+        if text.isEmpty || text == "" {
+            stack.isHidden = true
+        }
+        mainText.text = text
         titleLabel.text = title
-        mainTextLabel.text = text
+    
     }
     
-
+    @IBAction func likeAction(_ sender: Any) {
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

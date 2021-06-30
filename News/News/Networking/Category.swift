@@ -8,26 +8,21 @@
 import Foundation
 
 class APIKey {
-    
     static let shared = APIKey()
-    private init () {}
+    
     let apiKey = "d935e0c0a1774de093b2ede89e82753d"
-    var countryRequest = ""
-    var category = [String]()
-    var darkMode = false
-    var multicolor = false
     
 }
 
 
-enum Category:String {
-    case business = "business"
-    case entertainment = "entertainment"
-    case general = "general"
-    case health = "health"
-    case science = "science"
-    case sports = "sports"
-    case technology = "technology"
+enum CategoryEnum:String, CaseIterable {
+    case business
+    case entertainment
+    case general
+    case health
+    case science
+    case sports
+    case technology
 }
 
 enum Countrys:String {

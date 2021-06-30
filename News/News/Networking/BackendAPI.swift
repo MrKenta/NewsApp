@@ -60,31 +60,31 @@ extension NetworkService : TargetType{
         var parametrs = [String:Any]()
         switch self {
         case .getBusinessNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "business"
         case .getEntertainmentNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "entertainment"
         case .getGeneralNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "general"
         case .getHealthNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "health"
         case .getScienceNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "science"
         case.getSportsNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "sports"
         case .getTechnologyNews(let dataForServer):
-            parametrs["country"] = dataForServer.countryRequest
+            parametrs["country"] = Settings.shared.lang
             parametrs["apiKey"] = dataForServer.apiKey
             parametrs["category"] = "technology"
         default:

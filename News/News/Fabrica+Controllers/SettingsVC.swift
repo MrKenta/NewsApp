@@ -11,8 +11,18 @@ import UIKit
 
 class SettingsVC: UITableViewController{
     
-    @IBOutlet weak var acceptButton: UIButton!
+
     @IBOutlet weak var langPicker: UIPickerView!
+    @IBOutlet weak var businessSwitch: UISwitch!
+    @IBOutlet weak var entertainmentSwitch: UISwitch!
+    @IBOutlet weak var generalSwitch: UISwitch!
+    @IBOutlet weak var healthSwitch: UISwitch!
+    @IBOutlet weak var scienceSwitch: UISwitch!
+    @IBOutlet weak var sportSwitch: UISwitch!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var multicolorSwitch: UISwitch!
+    
+    
     var country:[Countrys] = [.ar,.at,.au,.be,.bg,.br,.ca,
                               .cn,.co,.cu,.de,.eg,.fr,.gr,
                               .hk,.hu,.id,.ie,.il,.ind,.it,
@@ -20,7 +30,7 @@ class SettingsVC: UITableViewController{
                               .ng,.nl,.no,.nz,.pl,.pt,.ro,
                               .ru,.sa,.se,.sg,.si,.sk,.th,
                               .tr,.tw,.ua,.us,.ve]
-    var categorys:[Category] = [.business,.entertainment,.general,.health,.science,.sports,.technology]
+    
     
     
     override func viewDidLoad() {
@@ -28,14 +38,50 @@ class SettingsVC: UITableViewController{
         langPicker.dataSource = self
         langPicker.delegate = self
         title = "SETTINGS"
-        acceptButton.layer.cornerRadius = 15
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewDidAppear(true)
+        let button = UIButton(frame:CGRect(x:0, y:0, width:70, height: 40))
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setTitle("Done", for:.normal )
+        button.setTitleColor(.white, for:.normal)
+        button.backgroundColor = .blue
+        button.setTitleColor(.green, for:.selected)
+        button.addTarget(self, action: #selector(showNews), for:.touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView:button)
+        navigationItem.rightBarButtonItem = rightBarButton
         navigationController?.navigationBar.barTintColor = .white
         tabBarController?.tabBar.barTintColor = .white
+        businessSwitch.isOn = Settings.shared.showController[CategoryEnum.business.rawValue]!
+        entertainmentSwitch.isOn = Settings.shared.showController[CategoryEnum.entertainment.rawValue]!
+        generalSwitch.isOn = Settings.shared.showController[CategoryEnum.general.rawValue]!
+        healthSwitch.isOn = Settings.shared.showController[CategoryEnum.health.rawValue]!
+        sportSwitch.isOn = Settings.shared.showController[CategoryEnum.sports.rawValue]!
+        scienceSwitch.isOn = Settings.shared.showController[CategoryEnum.science.rawValue]!
+        darkModeSwitch.isOn = Settings.shared.darkMode
+        multicolorSwitch.isOn = Settings.shared.multiColorMode
+        
+        }
+    
+    
+    @objc func showNews() {
+        let tabBar = UITabBarController()
+        let fabrica = Fabrica()
+        fabrica.getControllers()
+        switch fabrica.controllersToTabBar.isEmpty {
+        case true:
+            let alert = UIAlertController(title:"Please, select any category" , message:"Select any category to see news", preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"OK", style:.cancel, handler:nil))
+            present(alert, animated:true)
+        case false:
+            tabBar.viewControllers = fabrica.controllersToTabBar
+            tabBar.modalPresentationStyle = .fullScreen
+            present(tabBar, animated: true)
+    }
     }
     
     
@@ -48,22 +94,6 @@ class SettingsVC: UITableViewController{
         default:
             break
         }
-    }
-    
-    @IBAction func showVC(_ sender: Any) {
-        
-        let tabBar = UITabBarController()
-        var controllers = [UIViewController]()
-        let fabrica = Fabrica()
-        
-        for i in 0...APIKey.shared.category.count - 1 {
-            print(APIKey.shared.category.count)
-            let controller = fabrica.getController(category:APIKey.shared.category[i])
-            controllers.append(controller)
-        }
-        tabBar.viewControllers = controllers
-        navigationController?.pushViewController(tabBar, animated:true)
-        
     }
     
 }
@@ -88,131 +118,131 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
     func setCountryCode(number:Int) {
         switch country[number].rawValue {
         case "Argentina":
-            APIKey.shared.countryRequest = "ar"
+            Settings.shared.lang = "ar"
         case "Austria":
-            APIKey.shared.countryRequest = "at"
+            Settings.shared.lang = "at"
         case "Australia":
-            APIKey.shared.countryRequest = "au"
+            Settings.shared.lang = "au"
         case "Belgium":
-            APIKey.shared.countryRequest = "be"
+            Settings.shared.lang = "be"
         case "Bulgaria":
-            APIKey.shared.countryRequest = "bg"
+            Settings.shared.lang = "bg"
         case "Brazil":
-            APIKey.shared.countryRequest = "br"
+            Settings.shared.lang = "br"
         case "Canada":
-            APIKey.shared.countryRequest = "ca"
+            Settings.shared.lang = "ca"
         case "China":
-            APIKey.shared.countryRequest = "cn"
+            Settings.shared.lang = "cn"
         case "Colombia":
-            APIKey.shared.countryRequest = "co"
+            Settings.shared.lang = "co"
         case "Cuba":
-            APIKey.shared.countryRequest = "cu"
+            Settings.shared.lang = "cu"
         case "Germany":
-            APIKey.shared.countryRequest = "de"
+            Settings.shared.lang = "de"
         case "Egypt":
-            APIKey.shared.countryRequest = "eg"
+            Settings.shared.lang = "eg"
         case "France":
-            APIKey.shared.countryRequest = "fr"
+            Settings.shared.lang = "fr"
         case "Greece":
-            APIKey.shared.countryRequest = "gr"
+            Settings.shared.lang = "gr"
         case "Hong Kong":
-            APIKey.shared.countryRequest = "hk"
+            Settings.shared.lang = "hk"
         case "Hungary":
-            APIKey.shared.countryRequest = "hu"
+            Settings.shared.lang = "hu"
         case "Indonesia":
-            APIKey.shared.countryRequest = "id"
+            Settings.shared.lang = "id"
         case "Ireland":
-            APIKey.shared.countryRequest = "ie"
+            Settings.shared.lang = "ie"
         case "Israel":
-            APIKey.shared.countryRequest = "il"
+            Settings.shared.lang = "il"
         case "India":
-            APIKey.shared.countryRequest = "in"
+            Settings.shared.lang = "in"
         case "Italy":
-            APIKey.shared.countryRequest = "it"
+            Settings.shared.lang = "it"
         case "Japan":
-            APIKey.shared.countryRequest = "jp"
+            Settings.shared.lang = "jp"
         case "Korea":
-            APIKey.shared.countryRequest = "kr"
+            Settings.shared.lang = "kr"
         case "Lithuania":
-            APIKey.shared.countryRequest = "lt"
+            Settings.shared.lang = "lt"
         case "Latvia":
-            APIKey.shared.countryRequest = "lv"
+            Settings.shared.lang = "lv"
         case "Morocco":
-            APIKey.shared.countryRequest = "ma"
+            Settings.shared.lang = "ma"
         case "Mexico":
-            APIKey.shared.countryRequest = "mx"
+            Settings.shared.lang = "mx"
         case "Malaysia":
-            APIKey.shared.countryRequest = "my"
+            Settings.shared.lang = "my"
         case "Nigeria":
-            APIKey.shared.countryRequest = "ng"
+            Settings.shared.lang = "ng"
         case "Netherlands":
-            APIKey.shared.countryRequest = "nl"
+            Settings.shared.lang = "nl"
         case "Norway":
-            APIKey.shared.countryRequest = "no"
+            Settings.shared.lang = "no"
         case "New Zealand":
-            APIKey.shared.countryRequest = "nz"
+            Settings.shared.lang = "nz"
         case "Poland":
-            APIKey.shared.countryRequest = "pl"
+            Settings.shared.lang = "pl"
         case "Portugal":
-            APIKey.shared.countryRequest = "pt"
+            Settings.shared.lang = "pt"
         case "Romania":
-            APIKey.shared.countryRequest = "ro"
+            Settings.shared.lang = "ro"
         case "Russian Federation":
-            APIKey.shared.countryRequest = "ru"
+            Settings.shared.lang = "ru"
         case "Saudi Arabia":
-            APIKey.shared.countryRequest = "sa"
+            Settings.shared.lang = "sa"
         case "Sweden":
-            APIKey.shared.countryRequest = "se"
+            Settings.shared.lang = "se"
         case "Sudan":
-            APIKey.shared.countryRequest = "sg"
+            Settings.shared.lang = "sg"
         case "Slovenia":
-            APIKey.shared.countryRequest = "si"
+            Settings.shared.lang = "si"
         case "Slovakia":
-            APIKey.shared.countryRequest = "sk"
+            Settings.shared.lang = "sk"
         case "Thailand":
-            APIKey.shared.countryRequest = "th"
+            Settings.shared.lang = "th"
         case "Turkey":
-            APIKey.shared.countryRequest = "tr"
+            Settings.shared.lang = "tr"
         case "Taiwan":
-            APIKey.shared.countryRequest = "tw"
+            Settings.shared.lang = "tw"
         case "Ukraine":
-            APIKey.shared.countryRequest = "ua"
+            Settings.shared.lang = "ua"
         case "United States of America":
-            APIKey.shared.countryRequest = "us"
+            Settings.shared.lang = "us"
         case "Venezuela":
-            APIKey.shared.countryRequest = "ve"
+            Settings.shared.lang = "ve"
         default:
-            APIKey.shared.countryRequest = "us"
+            Settings.shared.lang = "us"
         }
     }
     
     func addCatedory(_ sender:UISwitch){
         switch sender.tag {
         case 100:
-            APIKey.shared.category.append(categorys[0].rawValue)
-            print("Add - \(categorys[0].rawValue)")
+            Settings.shared.showController[CategoryEnum.business.rawValue] = true
+            print("Add - \(CategoryEnum.business.rawValue)")
         case 101:
-            APIKey.shared.category.append(categorys[1].rawValue)
-            print("Add - \(categorys[1].rawValue)")
+            Settings.shared.showController[CategoryEnum.entertainment.rawValue] = true
+            print("Add - \(CategoryEnum.entertainment.rawValue)")
         case 102:
-            APIKey.shared.category.append(categorys[2].rawValue)
-            print("Add - \(categorys[2].rawValue)")
+            Settings.shared.showController[CategoryEnum.general.rawValue] = true
+            print("Add - general")
         case 103:
-            APIKey.shared.category.append(categorys[3].rawValue)
-            print("Add - \(categorys[3].rawValue)")
+            Settings.shared.showController[CategoryEnum.health.rawValue] = true
+            print("Add - \(CategoryEnum.health.rawValue)")
         case 104:
-            APIKey.shared.category.append(categorys[4].rawValue)
-            print("Add - \(categorys[4].rawValue)")
+            Settings.shared.showController[CategoryEnum.science.rawValue] = true
+            print("Add - \(CategoryEnum.sports.rawValue)")
         case 105:
-            APIKey.shared.category.append(categorys[5].rawValue)
-            print("Add - \(categorys[5].rawValue)")
-        case 106:
-            APIKey.shared.category.append(categorys[6].rawValue)
-            print("Add - \(categorys[6].rawValue)")
+            Settings.shared.showController[CategoryEnum.sports.rawValue] = true
+            print("Add - \(CategoryEnum.business.rawValue)")
+    
         case 107:
-            APIKey.shared.darkMode = true
+            Settings.shared.darkMode = true
+            print("Add - Dark Mode")
         case 108:
-            APIKey.shared.multicolor = true
+            Settings.shared.multiColorMode = true
+            print("Add - \(CategoryEnum.business.rawValue)")
         default:
             break
         }
@@ -220,58 +250,29 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
     func deleteCategory(_ sender:UISwitch) {
         switch sender.tag {
         case 100:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[0].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[0].rawValue)")
+            Settings.shared.showController[CategoryEnum.business.rawValue] = false
+            print("Remove - \(CategoryEnum.business.rawValue)")
         case 101:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[1].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[1].rawValue)")
+            Settings.shared.showController[CategoryEnum.entertainment.rawValue] = false
+            print("Remove - \(CategoryEnum.entertainment.rawValue)")
         case 102:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[2].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[2].rawValue)")
+            Settings.shared.showController[CategoryEnum.general.rawValue] = false
+            print("Remove - general")
         case 103:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[3].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[3].rawValue)")
+            Settings.shared.showController[CategoryEnum.health.rawValue] = false
+            print("Remove - \(CategoryEnum.health.rawValue)")
         case 104:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[4].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[4].rawValue)")
+            Settings.shared.showController[CategoryEnum.science.rawValue] = false
+            print("Remove - \(CategoryEnum.sports.rawValue)")
         case 105:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[5].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[5].rawValue)")
-        case 106:
-            for i in 0...APIKey.shared.category.count - 1 {
-                if APIKey.shared.category[i] == categorys[6].rawValue {
-                    APIKey.shared.category.remove(at:i)
-                }
-            }
-            print("Remove - \(categorys[6].rawValue)")
+            Settings.shared.showController[CategoryEnum.sports.rawValue] = false
+            print("Remove - \(CategoryEnum.business.rawValue)")
         case 107:
-            APIKey.shared.darkMode = false
+            Settings.shared.darkMode = false
+            print("Remove - Dark Mode")
         case 108:
-            APIKey.shared.multicolor = false
+            Settings.shared.multiColorMode = false
+            print("Remove - \(CategoryEnum.business.rawValue)")
         default:
             break
         }
