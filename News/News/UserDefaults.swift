@@ -23,6 +23,16 @@ class Settings {
         }
     }
     
+    var country : String {
+        set{
+            defaults.setValue(newValue, forKey:"Country")
+        }
+        get {
+            return defaults.value(forKey:"Country") as? String ?? "Japan"
+        }
+    }
+    
+    
     var lang : String {
         set{
             defaults.setValue(newValue, forKey:"Lang")

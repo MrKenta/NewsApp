@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3608925C26A2ED8D00BC8248 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3608925A26A2ED8D00BC8248 /* CoreData.xcdatamodeld */; };
 		36094CB4268C6A8100463C3F /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36094CB3268C6A8100463C3F /* StartVC.swift */; };
 		36099EA9265F8F6B0078BD29 /* BackendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EA8265F8F6B0078BD29 /* BackendAPI.swift */; };
 		36099EAC265F9A120078BD29 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EAB265F9A110078BD29 /* NetworkManager.swift */; };
 		36099EAF265F9C070078BD29 /* ObjectMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36099EAE265F9C070078BD29 /* ObjectMapping.swift */; };
+		360F3E6C26A348A800684607 /* SavedNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360F3E6B26A348A800684607 /* SavedNewsVC.swift */; };
+		360F3E7426A3630D00684607 /* SaveCoreDataProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360F3E7326A3630D00684607 /* SaveCoreDataProtocols.swift */; };
 		3610690B26875CD3009CFD2E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610690A26875CD3009CFD2E /* UserDefaults.swift */; };
 		3692A920265D469000DE92CD /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692A91F265D469000DE92CD /* SampleTableViewController.swift */; };
 		3692A923265D481400DE92CD /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692A922265D481400DE92CD /* SettingsVC.swift */; };
@@ -27,10 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3608925B26A2ED8D00BC8248 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		36094CB3268C6A8100463C3F /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		36099EA8265F8F6B0078BD29 /* BackendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPI.swift; sourceTree = "<group>"; };
 		36099EAB265F9A110078BD29 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		36099EAE265F9C070078BD29 /* ObjectMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectMapping.swift; sourceTree = "<group>"; };
+		360F3E6B26A348A800684607 /* SavedNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsVC.swift; sourceTree = "<group>"; };
+		360F3E7326A3630D00684607 /* SaveCoreDataProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreDataProtocols.swift; sourceTree = "<group>"; };
 		3610690A26875CD3009CFD2E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		3692A91F265D469000DE92CD /* SampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
 		3692A922265D481400DE92CD /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -79,6 +85,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		360F3E7226A362E600684607 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				360F3E7326A3630D00684607 /* SaveCoreDataProtocols.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		36C45EAD265802EC00EC58DA = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +114,7 @@
 		36C45EB8265802EC00EC58DA /* News */ = {
 			isa = PBXGroup;
 			children = (
+				360F3E7226A362E600684607 /* Protocol */,
 				36C45EB9265802EC00EC58DA /* AppDelegate.swift */,
 				36C45EBB265802EC00EC58DA /* SceneDelegate.swift */,
 				3610690A26875CD3009CFD2E /* UserDefaults.swift */,
@@ -110,6 +125,7 @@
 				36C45EC4265802EE00EC58DA /* LaunchScreen.storyboard */,
 				36C45ED72658055400EC58DA /* Fabrica+Controllers */,
 				36C45EC7265802EE00EC58DA /* Info.plist */,
+				3608925A26A2ED8D00BC8248 /* CoreData.xcdatamodeld */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -121,6 +137,7 @@
 				3692A91F265D469000DE92CD /* SampleTableViewController.swift */,
 				3692A922265D481400DE92CD /* SettingsVC.swift */,
 				36094CB3268C6A8100463C3F /* StartVC.swift */,
+				360F3E6B26A348A800684607 /* SavedNewsVC.swift */,
 			);
 			path = "Fabrica+Controllers";
 			sourceTree = "<group>";
@@ -263,13 +280,16 @@
 				36099EAC265F9A120078BD29 /* NetworkManager.swift in Sources */,
 				36C45ED52658052400EC58DA /* Fabrica.swift in Sources */,
 				36C45EBA265802EC00EC58DA /* AppDelegate.swift in Sources */,
+				3608925C26A2ED8D00BC8248 /* CoreData.xcdatamodeld in Sources */,
 				3610690B26875CD3009CFD2E /* UserDefaults.swift in Sources */,
 				36C45EBC265802EC00EC58DA /* SceneDelegate.swift in Sources */,
+				360F3E7426A3630D00684607 /* SaveCoreDataProtocols.swift in Sources */,
 				36C45EDE265806E000EC58DA /* SampleCell.swift in Sources */,
 				36C45EE6265807C500EC58DA /* Category.swift in Sources */,
 				36099EA9265F8F6B0078BD29 /* BackendAPI.swift in Sources */,
 				36099EAF265F9C070078BD29 /* ObjectMapping.swift in Sources */,
 				3692A920265D469000DE92CD /* SampleTableViewController.swift in Sources */,
+				360F3E6C26A348A800684607 /* SavedNewsVC.swift in Sources */,
 				3692A923265D481400DE92CD /* SettingsVC.swift in Sources */,
 				36094CB4268C6A8100463C3F /* StartVC.swift in Sources */,
 			);
@@ -475,6 +495,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3608925A26A2ED8D00BC8248 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3608925B26A2ED8D00BC8248 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 3608925B26A2ED8D00BC8248 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 36C45EAE265802EC00EC58DA /* Project object */;
 }

@@ -12,45 +12,51 @@ import UIKit
 class SettingsVC: UITableViewController{
     
 
-    @IBOutlet weak var langPicker: UIPickerView!
+    
+
+    @IBOutlet weak var countryField: UITextField!
+    
     @IBOutlet weak var businessSwitch: UISwitch!
     @IBOutlet weak var entertainmentSwitch: UISwitch!
     @IBOutlet weak var generalSwitch: UISwitch!
     @IBOutlet weak var healthSwitch: UISwitch!
     @IBOutlet weak var scienceSwitch: UISwitch!
     @IBOutlet weak var sportSwitch: UISwitch!
+    @IBOutlet weak var technologySwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var multicolorSwitch: UISwitch!
     
     
-    var country:[Countrys] = [.ar,.at,.au,.be,.bg,.br,.ca,
-                              .cn,.co,.cu,.de,.eg,.fr,.gr,
-                              .hk,.hu,.id,.ie,.il,.ind,.it,
-                              .jp,.kr,.lt,.lv,.ma,.mx,.my,
-                              .ng,.nl,.no,.nz,.pl,.pt,.ro,
-                              .ru,.sa,.se,.sg,.si,.sk,.th,
-                              .tr,.tw,.ua,.us,.ve]
+    var country = Countrys.allCases
     
     
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        let langPicker = UIPickerView()
+        countryField.inputView = langPicker
         langPicker.dataSource = self
         langPicker.delegate = self
         title = "SETTINGS"
+        
+        guard let fontText  = UIFont(name: "AvenirNextCondensed-Regular ", size: 20) else {return}
+        countryField.defaultTextAttributes = [NSAttributedString.Key.font: fontText]
+        guard let placeholderText = UIFont(name: "AvenirNextCondensed-Regular ", size: 20) else { return }
+        countryField.attributedPlaceholder = NSAttributedString(string: "Tap to choose country", attributes: [NSAttributedString.Key.font:placeholderText])
+        
+        
+        let tapGesture = UITapGestureRecognizer(target:self, action:#selector(hidePickerView))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewDidAppear(true)
-        let button = UIButton(frame:CGRect(x:0, y:0, width:70, height: 40))
+        let button = UIButton(frame:CGRect(x:0, y:0, width:70, height: 35))
         button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
         button.setTitle("Done", for:.normal )
-        button.setTitleColor(.white, for:.normal)
-        button.backgroundColor = .blue
-        button.setTitleColor(.green, for:.selected)
+        button.setTitleColor(.systemBlue, for:.normal)
+        button.setTitleColor(.green, for:.highlighted)
         button.addTarget(self, action: #selector(showNews), for:.touchUpInside)
         let rightBarButton = UIBarButtonItem(customView:button)
         navigationItem.rightBarButtonItem = rightBarButton
@@ -62,26 +68,39 @@ class SettingsVC: UITableViewController{
         healthSwitch.isOn = Settings.shared.showController[CategoryEnum.health.rawValue]!
         sportSwitch.isOn = Settings.shared.showController[CategoryEnum.sports.rawValue]!
         scienceSwitch.isOn = Settings.shared.showController[CategoryEnum.science.rawValue]!
+        technologySwitch.isOn = Settings.shared.showController[CategoryEnum.technology.rawValue]!
         darkModeSwitch.isOn = Settings.shared.darkMode
         multicolorSwitch.isOn = Settings.shared.multiColorMode
-        
+        countryField.text = Settings.shared.country
         }
     
+    override func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    
+    @objc func hidePickerView() {
+        self.view.endEditing(true)
+    }
     
     @objc func showNews() {
-        let tabBar = UITabBarController()
-        let fabrica = Fabrica()
-        fabrica.getControllers()
-        switch fabrica.controllersToTabBar.isEmpty {
-        case true:
-            let alert = UIAlertController(title:"Please, select any category" , message:"Select any category to see news", preferredStyle:.alert)
-            alert.addAction(UIAlertAction(title:"OK", style:.cancel, handler:nil))
-            present(alert, animated:true)
-        case false:
-            tabBar.viewControllers = fabrica.controllersToTabBar
-            tabBar.modalPresentationStyle = .fullScreen
-            present(tabBar, animated: true)
-    }
+        
+            let fabrica = Fabrica()
+            fabrica.getControllers()
+            switch fabrica.controllersToTabBar.isEmpty {
+            case true:
+                let alert = UIAlertController(title:"Please, select any category" , message:"Select any category to see news", preferredStyle:.alert)
+                alert.addAction(UIAlertAction(title:"OK", style:.cancel, handler:nil))
+                present(alert, animated:true)
+            case false:
+                tabBar.viewControllers = fabrica.controllersToTabBar
+                self.view.window?.rootViewController = tabBar
+            
+                
+            if Settings.shared.darkMode && Settings.shared.multiColorMode {
+                Settings.shared.multiColorMode = false
+                multicolorSwitch.isOn = Settings.shared.multiColorMode
+            }
+        }
     }
     
     
@@ -110,110 +129,18 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
         return country[row].rawValue
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        setCountryCode(number:row)
+        
+        countryField.text = country[row].rawValue
+        Settings.shared.country = countryField.text!
+        setCountryCode(name: country[row].rawValue)
         
         }
     
     
-    func setCountryCode(number:Int) {
-        switch country[number].rawValue {
-        case "Argentina":
-            Settings.shared.lang = "ar"
-        case "Austria":
-            Settings.shared.lang = "at"
-        case "Australia":
-            Settings.shared.lang = "au"
-        case "Belgium":
-            Settings.shared.lang = "be"
-        case "Bulgaria":
-            Settings.shared.lang = "bg"
-        case "Brazil":
-            Settings.shared.lang = "br"
-        case "Canada":
-            Settings.shared.lang = "ca"
-        case "China":
-            Settings.shared.lang = "cn"
-        case "Colombia":
-            Settings.shared.lang = "co"
-        case "Cuba":
-            Settings.shared.lang = "cu"
-        case "Germany":
-            Settings.shared.lang = "de"
-        case "Egypt":
-            Settings.shared.lang = "eg"
-        case "France":
-            Settings.shared.lang = "fr"
-        case "Greece":
-            Settings.shared.lang = "gr"
-        case "Hong Kong":
-            Settings.shared.lang = "hk"
-        case "Hungary":
-            Settings.shared.lang = "hu"
-        case "Indonesia":
-            Settings.shared.lang = "id"
-        case "Ireland":
-            Settings.shared.lang = "ie"
-        case "Israel":
-            Settings.shared.lang = "il"
-        case "India":
-            Settings.shared.lang = "in"
-        case "Italy":
-            Settings.shared.lang = "it"
-        case "Japan":
-            Settings.shared.lang = "jp"
-        case "Korea":
-            Settings.shared.lang = "kr"
-        case "Lithuania":
-            Settings.shared.lang = "lt"
-        case "Latvia":
-            Settings.shared.lang = "lv"
-        case "Morocco":
-            Settings.shared.lang = "ma"
-        case "Mexico":
-            Settings.shared.lang = "mx"
-        case "Malaysia":
-            Settings.shared.lang = "my"
-        case "Nigeria":
-            Settings.shared.lang = "ng"
-        case "Netherlands":
-            Settings.shared.lang = "nl"
-        case "Norway":
-            Settings.shared.lang = "no"
-        case "New Zealand":
-            Settings.shared.lang = "nz"
-        case "Poland":
-            Settings.shared.lang = "pl"
-        case "Portugal":
-            Settings.shared.lang = "pt"
-        case "Romania":
-            Settings.shared.lang = "ro"
-        case "Russian Federation":
-            Settings.shared.lang = "ru"
-        case "Saudi Arabia":
-            Settings.shared.lang = "sa"
-        case "Sweden":
-            Settings.shared.lang = "se"
-        case "Sudan":
-            Settings.shared.lang = "sg"
-        case "Slovenia":
-            Settings.shared.lang = "si"
-        case "Slovakia":
-            Settings.shared.lang = "sk"
-        case "Thailand":
-            Settings.shared.lang = "th"
-        case "Turkey":
-            Settings.shared.lang = "tr"
-        case "Taiwan":
-            Settings.shared.lang = "tw"
-        case "Ukraine":
-            Settings.shared.lang = "ua"
-        case "United States of America":
-            Settings.shared.lang = "us"
-        case "Venezuela":
-            Settings.shared.lang = "ve"
-        default:
-            Settings.shared.lang = "us"
-        }
+    
+    func setCountryCode(name: String) {
+        let code = CountryCode()
+        code.getCountryCode(countryName: name)
     }
     
     func addCatedory(_ sender:UISwitch){
@@ -235,14 +162,16 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
             print("Add - \(CategoryEnum.sports.rawValue)")
         case 105:
             Settings.shared.showController[CategoryEnum.sports.rawValue] = true
-            print("Add - \(CategoryEnum.business.rawValue)")
-    
+            print("Add - \(CategoryEnum.sports.rawValue)")
+        case 106:
+            Settings.shared.showController[CategoryEnum.technology.rawValue] = true
+            print("Add - \(CategoryEnum.technology.rawValue)")
         case 107:
             Settings.shared.darkMode = true
             print("Add - Dark Mode")
         case 108:
             Settings.shared.multiColorMode = true
-            print("Add - \(CategoryEnum.business.rawValue)")
+            print("Add - Multicolor")
         default:
             break
         }
@@ -267,6 +196,9 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
         case 105:
             Settings.shared.showController[CategoryEnum.sports.rawValue] = false
             print("Remove - \(CategoryEnum.business.rawValue)")
+        case 106:
+            Settings.shared.showController[CategoryEnum.technology.rawValue] = false
+            print("Add - \(CategoryEnum.technology.rawValue)")
         case 107:
             Settings.shared.darkMode = false
             print("Remove - Dark Mode")
@@ -277,4 +209,5 @@ extension SettingsVC : UIPickerViewDelegate,UIPickerViewDataSource {
             break
         }
     }
-    }
+    
+}

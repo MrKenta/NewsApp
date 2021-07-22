@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D899E06-788F-4C2A-A27F-E673056A982E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "News/Fabrica+Controllers/SettingsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "showNews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "87245BDA-2D0F-47E6-B218-310D61C6C9F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "News/Fabrica+Controllers/SettingsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "showNews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1D98AD3B-868F-4EDF-BFD0-02F74F83D9CC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -46,8 +14,8 @@
             filePath = "News/UserDefaults.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "addCategory()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +30,8 @@
             filePath = "News/UserDefaults.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "Settings"
             landmarkType = "3">
          </BreakpointContent>
@@ -94,8 +62,8 @@
             filePath = "News/Fabrica+Controllers/Fabrica.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "Fabrica"
             landmarkType = "3">
          </BreakpointContent>
@@ -103,201 +71,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "News/Fabrica+Controllers/SampleTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "1610">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "1849">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "2534">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "2989">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "3695">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "4404">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "5113">
-               </Location>
-               <Location
-                  uuid = "EA5EBB74-5622-4BB6-AFC9-A21077994052 - 27f8b8a1d2f12858"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "5822">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BEF03E9C-83AD-4841-858E-CF623AE6532D"
+            uuid = "3DB44533-9EF3-48D9-ACBF-9E2D037F41BE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "News/Fabrica+Controllers/SampleTableViewController.swift"
+            filePath = "News/Fabrica+Controllers/SettingsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "showNews()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BEF03E9C-83AD-4841-858E-CF623AE6532D - 27f8b8a1d2f12d8d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "4669">
-               </Location>
-               <Location
-                  uuid = "BEF03E9C-83AD-4841-858E-CF623AE6532D - b24e2b28ed6fb312"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #13 (News.ServerResponse) -&gt; () in News.SampleTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "News"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ramankrutsiou/Documents/Developers%20App/NewsApp/News/News/Fabrica+Controllers/SampleTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "87">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0E9C7E02-AAA7-44F4-B740-DB7FF8A05237"
+            uuid = "24BBAE89-071A-4A24-ADB4-A6CEA90E3348"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "News/Fabrica+Controllers/SampleTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C951470-EBC0-4C09-8DAC-E1205459CB99"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "News/Fabrica+Controllers/SampleTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

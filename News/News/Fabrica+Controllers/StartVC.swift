@@ -7,31 +7,41 @@
 
 import UIKit
 
-class StartVC: UIViewController {
+let tabBar = UITabBarController()
 
-    @IBOutlet weak var startButton: UIButton!
+
+class StartVC: UIViewController {
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        startButton.setTitle("Start", for:.normal)
-        startButton.setTitleColor(UIColor.white, for:.normal)
-        
+        tabBar.tabBar.unselectedItemTintColor = UIColor.systemBlue
+        tabBar.tabBar.tintColor = UIColor.systemGreen
     }
     
-    @IBAction func showNextVC(_ sender: Any) {
-        switch Settings.shared.isFirstLaunch {
-        case true:
-            let storyboard = UIStoryboard(name:"Main", bundle:nil)
-            guard let settingsVC = storyboard.instantiateViewController(identifier:String(describing: SettingsVC.self)) as? SettingsVC else { return  }
-            let navigationVC = UINavigationController(rootViewController:settingsVC)
-            present(navigationVC, animated:true)
-        case false:
-            let tabBarController = UITabBarController()
-            let fabrica = Fabrica()
-            fabrica.getControllers()
-            tabBarController.viewControllers = fabrica.controllersToTabBar
-            tabBarController.modalPresentationStyle = .fullScreen
-            present(tabBarController, animated:true)
+    
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { (Timer) in
+            switch Settings.shared.isFirstLaunch {
+            case true:
+                let storyboard = UIStoryboard(name:"Main", bundle:nil)
+                Settings.shared.addCategory()
+                guard let settingsVC = storyboard.instantiateViewController(identifier:String(describing: SettingsVC.self)) as? SettingsVC else { return  }
+                let navigationVC = UINavigationController(rootViewController:settingsVC)
+                Settings.shared.isFirstLaunch = false
+                self.view.window?.rootViewController = navigationVC
+                
+            case false:
+                let fabrica = Fabrica()
+                fabrica.getControllers()
+                tabBar.viewControllers = fabrica.controllersToTabBar
+                self.view.window?.rootViewController = tabBar
+            }
         }
     }
 }

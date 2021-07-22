@@ -16,7 +16,6 @@ class Fabrica {
   
     
     func getControllers() {
-        
         for item in categry {
             switch item.value {
             case true:
@@ -24,7 +23,7 @@ class Fabrica {
                 let navigationVC = UINavigationController(rootViewController:tableControllers)
                 switch item.key {
                         case CategoryEnum.business.rawValue:
-                            tableControllers.tabBarItem = UITabBarItem(title:item.key, image:UIImage(systemName:"dollarsign.circle.fill"), tag: count)
+                            tableControllers.tabBarItem = UITabBarItem(title:item.key, image: UIImage(named: "dollarsign.circle.fill"), tag: count)
                         case CategoryEnum.entertainment.rawValue:
                             tableControllers.tabBarItem = UITabBarItem(title:item.key, image:UIImage(systemName:"play.rectangle.fill"), tag: count)
                         case CategoryEnum.general.rawValue:
